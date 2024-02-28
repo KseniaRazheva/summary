@@ -18,7 +18,10 @@ module.exports = {
 		}
 	],
 	'parserOptions': {
-		'ecmaVersion': 'latest'
+		'ecmaVersion': 'latest',
+		'ecmaFeatures': {
+			'globalReturn': true
+		}
 	},
 	'rules': {
 		'indent': [
