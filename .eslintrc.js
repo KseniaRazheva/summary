@@ -40,5 +40,10 @@ module.exports = {
 			'error',
 			'always'
 		]
+	},
+	'eslint.options': {
+		'rules': {
+			'indent': [2, 4]
+		}
 	}
 };
