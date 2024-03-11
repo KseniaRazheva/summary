@@ -543,3 +543,13 @@
 // }
 // console.log(result);
 
+
+const usdCurr = 28;
+const eurCurr = 32;
+
+function convert(amount, curr) {
+    console.log(curr * amount);
+}
+
+convert(500, usdCurr); //500*28=14000
+convert(500, eurCurr); //500*32=16000
