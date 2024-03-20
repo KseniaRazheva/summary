@@ -1,3 +1,5 @@
+'use strict';
+
 //const arr = [5, 5, 5];
 
 //function grvr() {
@@ -631,152 +633,154 @@
 
 // Упражнение по написанию кода 8: (*) Продвинутые задания на использование функций
 //Задачи:
-//1) Создайте функцию, которая принимает в себя целое число минут и возвращает время в нужном формате строки. (Смотри пример). Обратите внимание на окончание слова "час" - оно меняется в зависимости от цифры. Если вместо аргумента приходит не число, дробное или отрицательное число - функция возвращает строку "Ошибка, проверьте данные"
-//Внимание! Давайте пока ограничимся максимум 600ю минутами (10 часов). Так как проверки на большие числа будут раздувать код (33 часа, 31 час, 11 часов и тд). Этого будет достаточно и код будет проверять именно этот промежуток (1 - 10 часов). Но вы можете реализовать и полный скрипт, он тоже должен проходить тесты.
-//Пример:
-//getTimeFromMinutes(150) => "Это 2 часа и 30 минут"
-//getTimeFromMinutes(50) => "Это 0 часов и 50 минут"
-//getTimeFromMinutes(0) => "Это 0 часов и 0 минут"
-//getTimeFromMinutes(-150) => "Ошибка, проверьте данные"
-
-'use strict';
-
-function getTimeFromMinutes(minutesTotal) {
-    if (typeof(minutesTotal) !== 'number' || minutesTotal < 0 || !Number.isInteger(minutesTotal)) {
-        return "Ошибка, проверьте данные";
-    }
-
-    const hours = Math.floor(minutesTotal / 60);
-    const minutes = minutesTotal % 60;
-
-    let hoursStr = '';
-
-    switch (hours) {
-        case 0:
-            hoursStr = 'часов';
-            break;
-        case 1:
-            hoursStr = 'час';
-            break;
-        case 2:
-        case 3:
-        case 4:
-            hoursStr = 'часа';
-            break;
-        default:
-            hoursStr = 'часов';
-    }
-
-    return `Это ${hours} ${hoursStr} и ${minutes} минут`;
-}
-
-console.log(getTimeFromMinutes(180)); //Это 3 часа и 0 минут
-
-//2) Напишите функцию, которая принимает в себя 4 числа и возвращает самое большее из них. Если один из аргументов не является числом или их меньше 4 - возвращается 0. Дробные числа разрешены.
-//Пример:
-//findMaxNumber(1, 5, 6.6, 11); =>  11
-//findMaxNumber(1, 5, '6', '10');  =>  0
-
-function findMaxNumber(a, b, c, d) {
-    if (typeof(a) !== 'number' ||
-        typeof(b) !== 'number' ||
-        typeof(c) !== 'number' ||
-        typeof(d) !== 'number') {
-        return 0;
-    } else {
-        return Math.max(a, b, c, d);
-    }
-}
-
-console.log(findMaxNumber(1, 5, 6.6, 10.5));//10.5
-console.log(findMaxNumber(1, 5, '6', '10'));//0
-
-//(**) Задача с собеседований на числа Фибоначчи
-//числа Фибоначчи, где первые два числа равны 0 и 1, а каждое последующее число равно сумме двух предыдущих чисел. 
-//решение БЕЗ рекурсии
-//Задача:
-//Создайте функцию, которая будет принимать в себя один аргумент-целое положительное число. Она должна возвращать строку, в которой будут через пробел выведены числа Фибоначчи. Причем, их количество должно быть равно переданному аргументу. Если переданный аргумент не число - вернуть пустую строку. Решать без применения рекурсии.
-//Пример:
-//fib(4) => ''0 1 1 2"
-//fib(7) => ''0 1 1 2 3 5 8"
-//fib('7') => ''"
-//fib(1) => "0"
-//fib(0) => ''"
-
-function fib(num) {
-    if (typeof(num) !== 'number' || num <= 0 || !Number.isInteger(num)) {
-        return "";
-    }
-
-    let result = '';
-    let first = 0;
-    let second = 1;
-
-    for (let i = 0; i < num; i++) {
-        if (i + 1 === num) {
-            result += `${first}`; //без пробела вконце
-        } else {
-            result += `${first} `;//с пробелом вконце
-        }
-
-        let third = first + second;
-        first = second;
-        second = third;
-    }
-
-    return result;
-}
-
-console.log(fib(5));//0 1 1 2 3
+// //1) Создайте функцию, которая принимает в себя целое число минут и возвращает время в нужном формате строки. (Смотри пример). Обратите внимание на окончание слова "час" - оно меняется в зависимости от цифры. Если вместо аргумента приходит не число, дробное или отрицательное число - функция возвращает строку "Ошибка, проверьте данные"
+// //Внимание! Давайте пока ограничимся максимум 600ю минутами (10 часов). Так как проверки на большие числа будут раздувать код (33 часа, 31 час, 11 часов и тд). Этого будет достаточно и код будет проверять именно этот промежуток (1 - 10 часов). Но вы можете реализовать и полный скрипт, он тоже должен проходить тесты.
+// //Пример:
+// //getTimeFromMinutes(150) => "Это 2 часа и 30 минут"
+// //getTimeFromMinutes(50) => "Это 0 часов и 50 минут"
+// //getTimeFromMinutes(0) => "Это 0 часов и 0 минут"
+// //getTimeFromMinutes(-150) => "Ошибка, проверьте данные"
 
 
-//l.31 callback-функции
+// function getTimeFromMinutes(minutesTotal) {
+//     if (typeof(minutesTotal) !== 'number' || minutesTotal < 0 || !Number.isInteger(minutesTotal)) {
+//         return "Ошибка, проверьте данные";
+//     }
 
-"use strict";
+//     const hours = Math.floor(minutesTotal / 60);
+//     const minutes = minutesTotal % 60;
 
-function first() {
-    //Do something
-    setTimeout(function() {
-        console.log(1);
-    }, 500);
-}
+//     let hoursStr = '';
 
-function second() {
-    console.log(2);
-}
+//     switch (hours) {
+//         case 0:
+//             hoursStr = 'часов';
+//             break;
+//         case 1:
+//             hoursStr = 'час';
+//             break;
+//         case 2:
+//         case 3:
+//         case 4:
+//             hoursStr = 'часа';
+//             break;
+//         default:
+//             hoursStr = 'часов';
+//     }
 
-first();
-second();
-//2
-//1
-//то есть вначале выполняется вторая функция, а потом задержка на 500миллисекунд/1000=0,5секунд и выполняется первая функция, то есть запускаются одна за другой, но результат могут отдать в разное время
-//колбэк - функция которая должна быть выполнена после того как другая функция завершила свое выполнение 
+//     return `Это ${hours} ${hoursStr} и ${minutes} минут`;
+// }
 
-function learnJS(lang, callback) {
-    console.log(`Я учу: ${lang}`);
-    callback();
-}
-
-learnJS('JavaScript', function() {
-    console.log('Я прошла этот урок!');
-});
-// учу: JavaScript
-//Я прошла этот урок!
+// console.log(getTimeFromMinutes(180)); //Это 3 часа и 0 минут
 
 
 
-function learnJS(lang, callback) {
-    console.log(`Я учу: ${lang}`);
-    callback();
-}
+// //2) Напишите функцию, которая принимает в себя 4 числа и возвращает самое большее из них. Если один из аргументов не является числом или их меньше 4 - возвращается 0. Дробные числа разрешены.
+// //Пример:
+// //findMaxNumber(1, 5, 6.6, 11); =>  11
+// //findMaxNumber(1, 5, '6', '10');  =>  0
 
-function done() {
-    console.log('Я прошла этот урок!!');
-}
+// function findMaxNumber(a, b, c, d) {
+//     if (typeof(a) !== 'number' ||
+//         typeof(b) !== 'number' ||
+//         typeof(c) !== 'number' ||
+//         typeof(d) !== 'number') {
+//         return 0;
+//     } else {
+//         return Math.max(a, b, c, d);
+//     }
+// }
 
-learnJS('JavaScript', done);
-//Я учу: JavaScript
-//Я прошла этот урок!!
+// console.log(findMaxNumber(1, 5, 6.6, 10.5));//10.5
+// console.log(findMaxNumber(1, 5, '6', '10'));//0
+
+
+
+// //(**) Задача с собеседований на числа Фибоначчи
+// //числа Фибоначчи, где первые два числа равны 0 и 1, а каждое последующее число равно сумме двух предыдущих чисел. 
+// //решение БЕЗ рекурсии
+// //Задача:
+// //Создайте функцию, которая будет принимать в себя один аргумент-целое положительное число. Она должна возвращать строку, в которой будут через пробел выведены числа Фибоначчи. Причем, их количество должно быть равно переданному аргументу. Если переданный аргумент не число - вернуть пустую строку. Решать без применения рекурсии.
+// //Пример:
+// //fib(4) => ''0 1 1 2"
+// //fib(7) => ''0 1 1 2 3 5 8"
+// //fib('7') => ''"
+// //fib(1) => "0"
+// //fib(0) => ''"
+
+// function fib(num) {
+//     if (typeof(num) !== 'number' || num <= 0 || !Number.isInteger(num)) {
+//         return "";
+//     }
+
+//     let result = '';
+//     let first = 0;
+//     let second = 1;
+
+//     for (let i = 0; i < num; i++) {
+//         if (i + 1 === num) {
+//             result += `${first}`; //без пробела вконце
+//         } else {
+//             result += `${first} `;//с пробелом вконце
+//         }
+
+//         let third = first + second;
+//         first = second;
+//         second = third;
+//     }
+
+//     return result;
+// }
+
+// console.log(fib(5));//0 1 1 2 3
+
+
+
+// //l.31 callback-функции
+
+// function first() {
+//     //Do something
+//     setTimeout(function() {
+//         console.log(1);
+//     }, 500);
+// }
+
+// function second() {
+//     console.log(2);
+// }
+
+// first();
+// second();
+// //2
+// //1
+// //то есть вначале выполняется вторая функция, а потом задержка на 500миллисекунд/1000=0,5секунд и выполняется первая функция, то есть запускаются одна за другой, но результат могут отдать в разное время
+// //колбэк - функция которая должна быть выполнена после того как другая функция завершила свое выполнение 
+
+// function learnJS(lang, callback) {
+//     console.log(`Я учу: ${lang}`);
+//     callback();
+// }
+
+// learnJS('JavaScript', function() {
+//     console.log('Я прошла этот урок!');
+// });
+// // учу: JavaScript
+// //Я прошла этот урок!
+
+
+
+// function learnJS(lang, callback) {
+//     console.log(`Я учу: ${lang}`);
+//     callback();
+// }
+
+// function done() {
+//     console.log('Я прошла этот урок!!');
+// }
+
+// learnJS('JavaScript', done);
+// //Я учу: JavaScript
+// //Я прошла этот урок!!
 
 
 
@@ -931,7 +935,7 @@ learnJS('JavaScript', done);
 
 //урок 33. Массивы и псевдомассивы
 
-const arr = [1, 2, 3, 6, 8]; //массив набор чисел
+//const arr = [1, 2, 3, 6, 8]; //массив набор чисел
 
 //arr.pop();//[ 1, 2, 3, 6 ] метод удаляет последний элемент массива
 //arr.push(10);//[ 1, 2, 3, 6, 8, 10 ] метод добавляет элемент (в скобках что добавить)
@@ -1012,15 +1016,164 @@ const arr = [1, 2, 3, 6, 8]; //массив набор чисел
 // //[ 10, 13, 2, 26, 8 ]
 // //очень странная сортировка, каждое число которое начинается с единички встало на первое место 10 и 13 по первому символу равны дальше 0 и 3 - 0 идет перед 3
 
-const arra = [2, 13, 26, 8, 10];
-arra.sort(compareNum);
-console.log(arra);
+// const arra = [2, 13, 26, 8, 10];
+// arra.sort(compareNum);
+// console.log(arra);
 
-function compareNum(a, b) {
-    return a - b;
-}
-//[ 2, 8, 10, 13, 26 ]
+// function compareNum(a, b) {
+//     return a - b;
+// }
+// //[ 2, 8, 10, 13, 26 ]
 
+
+
+
+//урок 35 передача по ссылке и по значению, spread оператор (ES6-ES9)
+
+// let a = 5,
+//     b = a;
+// b = b + 5;
+// console.log(b);//10
+// console.log(a);//5
+
+
+
+// const obj = {
+//     a: 5,
+//     b: 1
+// };
+// const copy = obj;//ссылку
+// copy.a = 10;
+// console.log(copy);//{ a: 10, b: 1 }
+// console.log(obj);//{ a: 10, b: 1 }
+// //не получилось. а как копировать объект?
+
+
+
+// function copy(mainObj) {
+//     let objCopy = {};
+//     let key;
+//     for (key in mainObj) {
+//         objCopy[key] = mainObj[key];
+//     }
+//     return objCopy;
+// }
+// const numbers = {
+//     a: 2,
+//     b: 5,
+//     c: {
+//         x: 7,
+//         y: 4
+//     }
+// };
+// const newNumbers = copy(numbers);
+// newNumbers.a = 10;
+// console.log(newNumbers);//{ a: 10, b: 5, c: { x: 7, y: 4 } }
+// console.log(numbers);//{ a: 2, b: 5, c: { x: 7, y: 4 } }
+//a - поменялось
+
+
+
+// function copy(mainObj) {
+//     let objCopy = {};
+//     let key;
+//     for (key in mainObj) {
+//         objCopy[key] = mainObj[key];
+//     }
+//     return objCopy;
+// }
+// const numbers = {
+//     a: 2,
+//     b: 5,
+//     c: {
+//         x: 7,
+//         y: 4
+//     }
+// };
+// const newNumbers = copy(numbers);
+// newNumbers.a = 10;
+// newNumbers.c.x = 10;
+// console.log(newNumbers);//{ a: 10, b: 5, c: { x: 10, y: 4 } }
+// console.log(numbers);//{ a: 2, b: 5, c: { x: 10, y: 4 } }
+// //a - поменялось
+// //x внутри c - перезаписалось в старом и новом при том что в старом было записано 7
+// //когда копируем объекты есть глубокие и поверхностные копии объектов
+// //сейчас создали поверхностную копию
+// //потом научимся создавать глубокую копию чтобы изменять скопированный объект
+
+
+
+// //Метод Object. assign() используется для копирования свойств из одного или нескольких объектов в объект, переданный в метод первым аргументом.
+// //соединить два объекта в один
+// const numbers = {
+//     a: 2,
+//     b: 5,
+//     c: {
+//         x: 7,
+//         y: 4
+//     }
+// };
+// const add = {
+//     d: 17,
+//     e: 20
+// };
+// // console.log(Object.assign(numbers, add));
+// // //{ a: 2, b: 5, c: { x: 7, y: 4 }, d: 17, e: 20 }
+// const clone = Object.assign({}, add);
+// clone.d = 33;
+// // console.log(add);//{ d: 17, e: 20 }
+// // console.log(clone);//{ d: 33, e: 20 }
+
+
+
+// const oldArray = ['a', 'b', 'c'];
+// const newArray = oldArray.slice();
+// newArray[1] = 'asdfghj';
+// console.log(newArray);//[ 'a', 'asdfghj', 'c' ]
+// console.log(oldArray);//[ 'a', 'b', 'c' ]
+
+
+
+// spread оператор или оператор разворота
+//1 вариант:
+// const video = ['youtube', 'vimeo', 'rutube'],
+//       blogs = ['wordpress', 'livejournal', 'blogger'],
+//       internet = [...video, ...blogs, 'vk', 'facebook'];
+// console.log(internet);
+// //[
+// //    'youtube',
+// //    'vimeo',
+// //    'rutube',
+// //    'wordpress',
+// //    'livejournal',
+// //    'blogger',
+// //    'vk',
+// //    'facebook'
+// //  ]
+//2 вариант:
+// function log(a, b, c) {
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+// }
+// const num = [2, 5, 7];
+// log(...num);
+// //2
+// //5
+// //7
+//3 вариант:
+// const array = ["a", "b"];
+// const newArray = [...array];
+// console.log(array);//[ 'a', 'b' ]
+// console.log(newArray);//[ 'a', 'b' ]
+//4 вариант:
+// const objQ = {
+//     one: 1,
+//     two: 2
+// };
+// const newObjQ = {...objQ};
+// console.log(objQ);//{ one: 1, two: 2 }
+// console.log(newObjQ);//{ one: 1, two: 2 }
 
 
 
