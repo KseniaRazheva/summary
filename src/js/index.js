@@ -1513,3 +1513,70 @@
 
 
 
+// //урок 39 Динамическая типизация в JS
+// //(превращение одних типов данных в другие)
+
+// // To String - превратить в строку
+
+// //1
+
+// console.log(typeof(String(null)));//string
+
+// console.log(String(null)); //null
+
+// console.log(typeof(String(4)));//string
+
+// //2 способ конкатенация сцепление
+
+// console.log(typeof(5 + ''));//string
+
+// console.log(typeof(null + ''));//string
+
+
+// const num = 5;
+// console.log("https://vk.com/catalog" + num); //https://vk.com/catalog5
+
+
+// const fontSize = 26 + 'px';
+// console.log(fontSize);//26px
+
+
+// // To Number
+
+// //1
+// console.log(typeof(Number('4')));//number
+
+// //2 способ унарный плюс
+// console.log(typeof(+'5'));//number
+
+// //3
+// console.log(typeof(parseInt("15px", 10)));//number
+
+
+// let answ = +prompt("Hello", "");//работает только в браузере
+
+// // To boolean
+
+// //пустота-false: 0, '', null, undefined, NaN
+
+// //1 способ нативный
+// let switcher = null;
+
+// if (switcher) {
+//     console.log('Working...');
+// }//null=false ответа нет
+
+// switcher = 1;
+
+// if (switcher) {
+//     console.log('Working...');
+// }//1=true ответ: Working...
+
+// //2 
+// console.log(typeof(Boolean('4')));//boolean
+
+// //3 - два знака отрицания !!
+// console.log(typeof(!!"44444"));//boolean
+
+
+
