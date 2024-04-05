@@ -1779,3 +1779,102 @@
 // //     averageLunchPrice: '20$',
 // //     openNow: true
 // // }
+
+
+
+//урок 43 Действия с элементами на странице
+// const box = document.getElementById('box');
+// console.log(box);//отображает элемент с айди box
+
+
+// const btns = document.getElementsByTagName('button');
+// console.log(btns);//отображает массив из всех кнопок
+// если в хтмл оставить только одну кнопку, то все равно вернется массив но с одним значением
+
+// const btns = document.getElementsByTagName('button')[1];
+// console.log(btns);//отображает 2 элемент
+
+// const btns = document.getElementsByTagName('button');
+// console.log(btns[1]);//отображает 2 элемент
+
+
+// const circles = document.getElementsByClassName('circle');//class-без точки
+// console.log(circles);//возвращает массив всех circle
+
+
+// const hearts = document.querySelectorAll('.heart');
+// //console.log(hearts);//возвращает массив всех heart
+// hearts.forEach(item => {
+//     console.log(item);
+// });//возвращает одно сердечко
+//
+// const oneHeart = document.querySelector('.heart');
+// console.log(oneHeart);//возвращает одно сердечко
+
+// const oneHeart = document.querySelector('div');
+// console.log(oneHeart);//возвращает первый на странице див box
+
+const box = document.getElementById('box'),
+      btns = document.getElementsByTagName('button'),
+      circles = document.getElementsByClassName('circle'),
+      wrapper = document.querySelector('.wrapper'),
+      hearts = wrapper.querySelectorAll('.heart'),
+      oneHeart = wrapper.querySelector('.heart');
+
+//console.dir(box);//получаем элемент в качестве объекта
+
+
+// box.style.backgroundColor = 'blue'; //меняем элементу box цвет
+// box.style.width = '500px';//меняем элементу box ширину
+box.style.cssText = 'background-color: blue; width: 500px';
+
+
+btns[1].style.borderRadius = '100%';//кнопка2 (индекс1) становится овальная
+circles[0].style.backgroundColor = 'red';//окрасила первый кружок в красный цвет
+
+
+// for (let i = 0; i < hearts.length; i++) {
+//     hearts[i].style.backgroundColor = 'blue';
+// }//окрасило фон сердечек так как сами сердечки созданы через after-before
+//
+hearts.forEach(item => {
+    item.style.backgroundColor = 'blue';
+});//работает точно также
+
+
+const div = document.createElement('div');//существует только в js на странице не появится
+//const text = document.createTextNode('Тут был я');
+
+
+div.classList.add('black');//добавили див с классом блэк, но без document он не отобразиться на странице
+document.body.append(div);//в конец бади создали див с классом black получили черный прямоугольник стили он взял из css
+//document.querySelector('.wrapper').append(div);//в обертку wrapper добавился элемент див с классом блэк, но можно добавить его в переменные если он используется несколько раз const wrapper = document.querySelector('.wrapper');  тогда переписываем код:
+//wrapper.append(div);
+//wrapper.appendChild(div);//разницы нет
+//wrapper.prepend(div);//черный прямоугольник перескакивает выше сердечек в блоке wrapper ИЛИ:
+//hearts[0].before(div);//черный прямоугольник перед 1 сердечком
+//hearts[0].after(div);//черный прямоугольник встал после первого красного сердечка
+//wrapper.insertBefore(div, hearts[0]);//черный прямоугольник вставляю в начало wrapper
+//wrapper.insertBefore(div, hearts[1]);//черный прямоугольник вставляю после первого сердечка
+
+
+//circles[0].remove();//удалила первый кружочек
+//wrapper.removeChild(hearts[1]);//удалила второе сердечко
+
+hearts[0].replaceWith(circles[0]);//поменяла первое сердце на первый кружочек (кружочек перенесен на новое место)
+//wrapper.replaceChild(circles[0], hearts[0]);//вместо 1 сердечка встает 1 кружочек. (вначале элемент который переставляют, потом на чье место)
+
+
+//div.innerHTML = "Hello World";
+div.innerHTML = "<h1>Hello World</h1>";//можно вставить хтмлкод на черный прямоугольник
+//div.textContent = "Hello";//можно вставить текст на черный прямоугольник
+//div.textContent = "<h1>Hello World</h1>";//текст на черном прямоугольнике: <h1>Hello World</h1>
+//то для безопасности: иногда данные получаем от пользователя и если данные полученные от пользователя попадают в innerHTML это может повлиять на сайт и сломать верстку, поэтому пользователь может записывать информацию только в поле textContent
+
+
+
+//div.insertAdjacentHTML("afterbegin", '<h2>Hello</h2>');//h2 идет ДО h1 ВНУТРИ обертки див блэк
+//div.insertAdjacentHTML("beforeend", '<h2>Hello</h2>');//h2 идет ПОСЛЕ h1 ВНУТРИ обертки див блэк
+//div.insertAdjacentHTML("beforebegin", '<h2>Hello</h2>'); //h2 идет ДО h1 ВНЕ обертки див блэк
+//div.insertAdjacentHTML("afterend", '<h2>Hello</h2>');//h2 идет после h1 ВНЕ обертки див блэк
+
