@@ -276,5 +276,112 @@
 //     }
 // };
 
+/* Задания на урок:
 
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов */
+
+'use strict';
+
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
+};
+
+const adv = document.querySelectorAll('.promo__adv img');
+
+//adv.remote();//не работает
+// adv.forEach(function (item){
+//     item.remove();
+// });//без стрелочной функции работает, но предпочтительнее использовать стрелочную функцию:
+adv.forEach(item => {
+    item.remove();
+});//1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+
+// .promo__genre in .promo__bg
+const poster = document.querySelector('.promo__bg'),
+      genre = poster.querySelector('.promo__genre');
+genre.textContent = 'драма';//2) Изменить жанр фильма, поменять "комедия" на "драма"
+poster.style.backgroundImage = "url('img/bg.jpg')";//3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.Реализовать только при помощи JS
+
+
+//.promo__interactive-item in .promo__interactive-list
+//const movieList = document.querySelectorAll('.promo__interactive-list');
+//movieList.innerHTML = "";//очищаю список просмотренных фильмов И ничего не произошло, innerHTML не работает с массивами, надо взять только первый элемент:
+const movieList = document.querySelector('.promo__interactive-list');//так работает
+movieList.innerHTML = "";//так работает
+
+
+movieDB.movies.sort();//сортировка по порядку
+// const movieDB = {
+//     movies: [
+//         "Логан",
+//         "Лига справедливости",
+//         "Ла-ла лэнд",
+//         "Одержимость",
+//         "Скотт Пилигрим против..."
+//     ]
+// };
+// console.log(movieDB.movies.sort());
+// // [
+// //     'Ла-ла лэнд',
+// //     'Лига справедливости',
+// //     'Логан',
+// //     'Одержимость',
+// //     'Скотт Пилигрим против...'
+// //   ]
+
+
+//console.log(poster.innerHTML);
+//консоль в браузере возвращает:
+//<div class="promo__genre">драма</div>
+//<div class="promo__title">МАРСИАНИН</div>
+//<div class="promo__descr">ИСТОРИЯ ЧЕЛОВЕКА, ВЫЖИВШЕГО НА ЧУЖОЙ ПЛАНЕТЕ В ОДИНОЧКУ</div>
+//<div class="promo__ratings">
+//    <span>IMDb: 8.0</span>
+//    <span>Кинопоиск: 7.7</span>
+//</div>
+
+
+
+//a = a + 1; РАВНО a += 1; - добавляем к a один
+
+// movieDB.movies.forEach((film, i) => {
+//     movieList.innerHTML += `
+//         <li class="promo__interactive-item">СКОТТ ПИЛИГРИМ ПРОТИВ...
+//             <div class="delete"></div>
+//         </li>
+//     `;
+// });//РАБОТАЕТ
+//сформировалось 5 одинаковых фильмов в списке
+//если убрать плюсик то в списке появится только 1 фильм
+//не работает если заменяю += на movieList.innerHTML = movieList.innerHTML + ``
+
+movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+        <li class="promo__interactive-item">${i + 1} ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+});//выводится список с нумерацией и по порядку
+
+
+
+
+  
 
