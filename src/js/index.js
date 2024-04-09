@@ -1958,3 +1958,143 @@ btns.forEach(item => {
     item.addEventListener('click', deleteElement, {once: true});
 });//теперь каждая кнопка работает
 //once - один раз аналог remove удаления после того как сработает
+
+
+
+//урок 47 рекурсия
+
+// function pow(x, n) {
+//     let result = 1;
+//     for (let i = 0; i < n; i++) {
+//         result *= x;//это result = result * x
+//     }
+//     return result;
+// }//цикл
+
+// function pow(x, n) {
+//     if (n === 1) {
+//         return x;
+//     } else {
+//         return x * pow(x, n - 1);
+//     }
+// }//рекурсия
+
+
+// console.log(pow(2, 1));//2-два в первой степени
+// console.log(pow(2, 2));//4
+// console.log(pow(2, 3));//8
+// console.log(pow(2, 4));//16
+
+
+// let students = {
+//     js: [{
+//         name: 'John',
+//         progress: 100
+//     }, {
+//         name: 'Ivan',
+//         progress: 60
+//     }],
+
+//     html: {
+//         basic: [{
+//             name: 'Peter',
+//             progress: 20
+//         }, {
+//             name: 'Ann',
+//             progress: 18
+//         }],
+
+//         pro: [{
+//             name: 'Sam',
+//             progress: 10
+//         }],
+
+//         semi: {
+//             students: [{
+//                 name: 'Test',
+//                 progress: 100
+//             }]
+//         }
+//     }
+// };
+
+//посчитать средний прогресс студентов со всех курсов
+// //цикл:
+// function getTotalProgressByIteration(data) {
+//     let totalProgress = 0;
+//     let students = 0;
+
+//     for (let course of Object.values(data)) {
+//         if (Array.isArray(course)) {
+//             students = students + course.length;
+//             //students += course.length;
+
+//             for (let i = 0; i < course.length; i++) {
+//                 totalProgress = totalProgress + course[i].progress;
+//                 //total += course[i].progress;
+//             }
+//         } else {
+//             for (let subCourse of Object.values(course)) {
+//                 students = students + subCourse.length;
+//                 //students += subCourse.length;
+
+//                 for (let i = 0; i < subCourse.length; i++) {
+//                     totalProgress = totalProgress + subCourse[i].progress;
+//                     //total += subCourse[i].progress;
+//                 }
+//             }
+//         }
+//     }
+
+//     return totalProgress / students;
+// }
+// console.log(getTotalProgressByIteration(students));//41.6
+// //цикл вначале что делаем с массивами, потом что делаем с объектами
+// //course это общий массив - правая сторона студентс (js & html опускаются) остается name-john и тд 
+// //этот код для структуры когда идет перебор массивов внутри объекта, если в список добавится объект то есть [], [], [], {} то надо добавлять еще условие внутри условия и так до бесконечности (тут помогает рекурсия)
+// //рекурсия заносит в функцию повторяющееся части кода 
+
+
+// //рекурсия:
+// //if если массив, else если объект
+// function getTotalProgressByRecursion(data) {
+//     if (Array.isArray(data)) {
+//         let totalProgress = 0;
+
+//         for (let i = 0; i < data.length; i++) {
+//             totalProgress = totalProgress + data[i].progress;
+//         }
+
+//         return [totalProgress, data.length];
+//     } else {
+//         let totalProgress = [0, 0];
+
+//         for (let subData of Object.values(data)) {
+//             const subDataArr = getTotalProgressByRecursion(subData);
+//             totalProgress[0] = totalProgress[0] + subDataArr[0]; 
+//             totalProgress[1] = totalProgress[1] + subDataArr[1];
+//         }
+
+//         return totalProgress;
+//     }
+// }
+
+// const result = getTotalProgressByRecursion(students);
+
+// //console.log(result[0]/result[1]);//41.6 - let без semi
+
+// //обавила в let students внутрь html - semi
+// //список массив, массив, объект
+// //{{[][]{}}}
+// // semi: {
+// //     students: [{
+// //         name: 'Test',
+// //         progress: 100
+// //     }]
+// // }
+// //первая функция с циклом расчитана на определенную структуру: обработает массив, массив, а потом поломается об объект
+
+// //снова запускаем функцию рекурсию с учетом нового let
+
+// console.log(result[0]/result[1]);//51.333333333333336
+// //теперь функция работает с любой вложенностью сколько бы мы не добавляли структур
