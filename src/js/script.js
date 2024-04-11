@@ -402,3 +402,105 @@
 //4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: "Добавляем любимый фильм"
 
 //5) Фильмы должны быть отсортированы по алфавиту
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
+
+    const adv = document.querySelectorAll('.promo__adv img'),
+        poster = document.querySelector('.promo__bg'),
+        genre = poster.querySelector('.promo__genre'),
+        movieList = document.querySelector('.promo__interactive-list'),
+        addForm = document.querySelector('form.add'),//форма вся правая часть
+        addInput = addForm.querySelector('.adding__input'),//поле ввода "что уже просмотрено"
+        checkbox = addForm.querySelector('[type="checkbox"]');//квадратик для галочки
+    //получаю элементы с которыми хочу работать
+
+
+    //событие submit отправка данных формы щелчок по кнопке <input type="submit">
+    addForm.addEventListener('submit', (event) => {
+        event.preventDefault();//отмена стандартного поведения браузера - кнопка отправить не перезагружает страницу
+
+        let newFilm = addInput.value;//добавляет пустую строку если не указаны условия if: push, sortArr, createMovieList - тогда при нажатии на "подтвердить" ничего не происходит
+        const favorite = checkbox.checked;
+
+        if (newFilm) {
+
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0, 22)}...`;
+            }//обрезка названия фильма, когда больше 21 символа добавляется многоточие (это задача 2 такая короткая: задать переменную, а потом условие if если длина больше то интерполяция(склейка) строка между двумя индексами 0-22 названия фильма и многоточия)
+
+            if (favorite) {
+                console.log("Добавляем любимый фильм");
+            }//задание 4 - добавляем любимый фильм
+
+            movieDB.movies.push(newFilm);//пушим строчку которая будет добавляться в массив через запятую 
+            sortArr(movieDB.movies);//сортировка по алфавиту
+
+            createMovieList(movieDB.movies, movieList);//создание новых элементов на страничке, функция createMovieList отвечает за то чтобы у тебя пересчитывалась нумерация
+        }
+
+        event.target.reset();//сбросить событие
+
+    });
+
+    const deleteAdv = (arr) => {
+        arr.forEach(item => {
+            item.remove();
+        });
+    };//функция для удаления рекламы
+
+    const makeChanges = () => {
+        genre.textContent = 'драма';
+
+        poster.style.backgroundImage = 'url("img/bg.jpg")';
+    };//функция которая делает изменения на странице (меняет жанр комедия на драму, меняет задний фон)
+
+    const sortArr = (arr) => {
+        arr.sort();
+    };//функция принимает в себя массив и сортирует его
+
+    function createMovieList(films, parent) {
+        parent.innerHTML = "";//родительский элемент будем очищать
+        sortArr(films);//сортировка по алфавиту - задание 5
+
+        films.forEach((film, i) => {
+            parent.innerHTML += `
+                <li class="promo__interactive-item">${i + 1} ${film}
+                    <div class="delete"></div>
+                </li>
+            `;
+        });//и в родительский элемент будем добавлять новые фильмы
+
+        document.querySelectorAll('.delete').forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+
+                createMovieList(films, parent);
+            });
+        });
+        //получаю все корзинки - querySelectorAll delete
+        //и перебираю с помощью метода форИч
+        //колбек функция мне понадобится два аргумента каждая отдельная кнопка-корзиночка и нумерация
+        //я обращаюсь к каждой корзинке внутри и навешиваю обраюотчик событий кликов, во внутрь опять запускаю колбек функцию 
+        //обращаемся к кнопке и родительскомуЭлементу и просим удалиться со страницы remove, а еще надо удалить его из базы данных movieDB с помощью метода splice который вырезает выбранный элемент из массива и в аргументах какой элемент i нужно удалить и сколько элементов нужно удалить 1
+        //функция createMovieList отвечает за то чтобы у тебя пересчитывалась нумерация c единицы
+    }
+
+    deleteAdv(adv);//вызов функции для удаления рекламы
+    makeChanges();//вызов функции которая отвечает за изменения (текст, картинка)
+    createMovieList(movieDB.movies, movieList);//вызов функции которая отображает список фильмов
+});
+
+
+
