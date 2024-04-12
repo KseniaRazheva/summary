@@ -2191,3 +2191,19 @@ window.addEventListener('DOMContentLoaded', () => {
 //2) targetTouches - св-во все пальцы которые взаимодействуют именно с этим элементом конкретным
 //3) changedTouches - список пальцев которые участвуют в текущем событии. То есть если приложить 5 пальцев и при использовании touchEnd в списке будет 1 убранный палец даже если остальные 4 еще на экране.
 //еще есть свайп, щепотка(зум)
+
+
+
+//урок 50 
+//как подключить script.js
+
+function loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = false;
+    document.body.append(script);
+}
+
+// loadScript("js/script.js"); почему-то здесь не подключает js в котором куча всего, только новые в которых 1 запись:
+loadScript("js/some.js");
+loadScript("js/test.js");
