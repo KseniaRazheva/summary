@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 
 //const arr = [5, 5, 5];
 
@@ -1783,182 +1783,182 @@
 
 
 
-//урок 43 Действия с элементами на странице
-// const box = document.getElementById('box');
-// console.log(box);//отображает элемент с айди box
+// //урок 43 Действия с элементами на странице
+// // const box = document.getElementById('box');
+// // console.log(box);//отображает элемент с айди box
 
 
-// const btns = document.getElementsByTagName('button');
-// console.log(btns);//отображает массив из всех кнопок
-// если в хтмл оставить только одну кнопку, то все равно вернется массив но с одним значением
+// // const btns = document.getElementsByTagName('button');
+// // console.log(btns);//отображает массив из всех кнопок
+// // если в хтмл оставить только одну кнопку, то все равно вернется массив но с одним значением
 
-// const btns = document.getElementsByTagName('button')[1];
-// console.log(btns);//отображает 2 элемент
+// // const btns = document.getElementsByTagName('button')[1];
+// // console.log(btns);//отображает 2 элемент
 
-// const btns = document.getElementsByTagName('button');
-// console.log(btns[1]);//отображает 2 элемент
-
-
-// const circles = document.getElementsByClassName('circle');//class-без точки
-// console.log(circles);//возвращает массив всех circle
+// // const btns = document.getElementsByTagName('button');
+// // console.log(btns[1]);//отображает 2 элемент
 
 
-// const hearts = document.querySelectorAll('.heart');
-// //console.log(hearts);//возвращает массив всех heart
+// // const circles = document.getElementsByClassName('circle');//class-без точки
+// // console.log(circles);//возвращает массив всех circle
+
+
+// // const hearts = document.querySelectorAll('.heart');
+// // //console.log(hearts);//возвращает массив всех heart
+// // hearts.forEach(item => {
+// //     console.log(item);
+// // });//возвращает одно сердечко
+// //
+// // const oneHeart = document.querySelector('.heart');
+// // console.log(oneHeart);//возвращает одно сердечко
+
+// // const oneHeart = document.querySelector('div');
+// // console.log(oneHeart);//возвращает первый на странице див box
+
+// const box = document.getElementById('box'),
+//       btns = document.getElementsByTagName('button'),
+//       circles = document.getElementsByClassName('circle'),
+//       wrapper = document.querySelector('.wrapper'),
+//       hearts = wrapper.querySelectorAll('.heart'),
+//       oneHeart = wrapper.querySelector('.heart');
+
+// //console.dir(box);//получаем элемент в качестве объекта
+
+
+// // box.style.backgroundColor = 'blue'; //меняем элементу box цвет
+// // box.style.width = '500px';//меняем элементу box ширину
+// box.style.cssText = 'background-color: blue; width: 500px';
+
+
+// btns[1].style.borderRadius = '100%';//кнопка2 (индекс1) становится овальная
+// circles[0].style.backgroundColor = 'red';//окрасила первый кружок в красный цвет
+
+
+// // for (let i = 0; i < hearts.length; i++) {
+// //     hearts[i].style.backgroundColor = 'blue';
+// // }//окрасило фон сердечек так как сами сердечки созданы через after-before
+// //
 // hearts.forEach(item => {
-//     console.log(item);
-// });//возвращает одно сердечко
-//
-// const oneHeart = document.querySelector('.heart');
-// console.log(oneHeart);//возвращает одно сердечко
-
-// const oneHeart = document.querySelector('div');
-// console.log(oneHeart);//возвращает первый на странице див box
-
-const box = document.getElementById('box'),
-      btns = document.getElementsByTagName('button'),
-      circles = document.getElementsByClassName('circle'),
-      wrapper = document.querySelector('.wrapper'),
-      hearts = wrapper.querySelectorAll('.heart'),
-      oneHeart = wrapper.querySelector('.heart');
-
-//console.dir(box);//получаем элемент в качестве объекта
+//     item.style.backgroundColor = 'blue';
+// });//работает точно также
 
 
-// box.style.backgroundColor = 'blue'; //меняем элементу box цвет
-// box.style.width = '500px';//меняем элементу box ширину
-box.style.cssText = 'background-color: blue; width: 500px';
+// const div = document.createElement('div');//существует только в js на странице не появится
+// //const text = document.createTextNode('Тут был я');
 
 
-btns[1].style.borderRadius = '100%';//кнопка2 (индекс1) становится овальная
-circles[0].style.backgroundColor = 'red';//окрасила первый кружок в красный цвет
+// div.classList.add('black');//добавили див с классом блэк, но без document он не отобразиться на странице
+// document.body.append(div);//в конец бади создали див с классом black получили черный прямоугольник стили он взял из css
+// //document.querySelector('.wrapper').append(div);//в обертку wrapper добавился элемент див с классом блэк, но можно добавить его в переменные если он используется несколько раз const wrapper = document.querySelector('.wrapper');  тогда переписываем код:
+// //wrapper.append(div);
+// //wrapper.appendChild(div);//разницы нет
+// //wrapper.prepend(div);//черный прямоугольник перескакивает выше сердечек в блоке wrapper ИЛИ:
+// //hearts[0].before(div);//черный прямоугольник перед 1 сердечком
+// //hearts[0].after(div);//черный прямоугольник встал после первого красного сердечка
+// //wrapper.insertBefore(div, hearts[0]);//черный прямоугольник вставляю в начало wrapper
+// //wrapper.insertBefore(div, hearts[1]);//черный прямоугольник вставляю после первого сердечка
 
 
-// for (let i = 0; i < hearts.length; i++) {
-//     hearts[i].style.backgroundColor = 'blue';
-// }//окрасило фон сердечек так как сами сердечки созданы через after-before
-//
-hearts.forEach(item => {
-    item.style.backgroundColor = 'blue';
-});//работает точно также
+// //circles[0].remove();//удалила первый кружочек
+// //wrapper.removeChild(hearts[1]);//удалила второе сердечко
+
+// hearts[0].replaceWith(circles[0]);//поменяла первое сердце на первый кружочек (кружочек перенесен на новое место)
+// //wrapper.replaceChild(circles[0], hearts[0]);//вместо 1 сердечка встает 1 кружочек. (вначале элемент который переставляют, потом на чье место)
 
 
-const div = document.createElement('div');//существует только в js на странице не появится
-//const text = document.createTextNode('Тут был я');
-
-
-div.classList.add('black');//добавили див с классом блэк, но без document он не отобразиться на странице
-document.body.append(div);//в конец бади создали див с классом black получили черный прямоугольник стили он взял из css
-//document.querySelector('.wrapper').append(div);//в обертку wrapper добавился элемент див с классом блэк, но можно добавить его в переменные если он используется несколько раз const wrapper = document.querySelector('.wrapper');  тогда переписываем код:
-//wrapper.append(div);
-//wrapper.appendChild(div);//разницы нет
-//wrapper.prepend(div);//черный прямоугольник перескакивает выше сердечек в блоке wrapper ИЛИ:
-//hearts[0].before(div);//черный прямоугольник перед 1 сердечком
-//hearts[0].after(div);//черный прямоугольник встал после первого красного сердечка
-//wrapper.insertBefore(div, hearts[0]);//черный прямоугольник вставляю в начало wrapper
-//wrapper.insertBefore(div, hearts[1]);//черный прямоугольник вставляю после первого сердечка
-
-
-//circles[0].remove();//удалила первый кружочек
-//wrapper.removeChild(hearts[1]);//удалила второе сердечко
-
-hearts[0].replaceWith(circles[0]);//поменяла первое сердце на первый кружочек (кружочек перенесен на новое место)
-//wrapper.replaceChild(circles[0], hearts[0]);//вместо 1 сердечка встает 1 кружочек. (вначале элемент который переставляют, потом на чье место)
-
-
-//div.innerHTML = "Hello World";
-div.innerHTML = "<h1>Hello World</h1>";//можно вставить хтмлкод на черный прямоугольник
-//div.textContent = "Hello";//можно вставить текст на черный прямоугольник
-//div.textContent = "<h1>Hello World</h1>";//текст на черном прямоугольнике: <h1>Hello World</h1>
-//то для безопасности: иногда данные получаем от пользователя и если данные полученные от пользователя попадают в innerHTML это может повлиять на сайт и сломать верстку, поэтому пользователь может записывать информацию только в поле textContent
+// //div.innerHTML = "Hello World";
+// div.innerHTML = "<h1>Hello World</h1>";//можно вставить хтмлкод на черный прямоугольник
+// //div.textContent = "Hello";//можно вставить текст на черный прямоугольник
+// //div.textContent = "<h1>Hello World</h1>";//текст на черном прямоугольнике: <h1>Hello World</h1>
+// //то для безопасности: иногда данные получаем от пользователя и если данные полученные от пользователя попадают в innerHTML это может повлиять на сайт и сломать верстку, поэтому пользователь может записывать информацию только в поле textContent
 
 
 
-//div.insertAdjacentHTML("afterbegin", '<h2>Hello</h2>');//h2 идет ДО h1 ВНУТРИ обертки див блэк
-//div.insertAdjacentHTML("beforeend", '<h2>Hello</h2>');//h2 идет ПОСЛЕ h1 ВНУТРИ обертки див блэк
-//div.insertAdjacentHTML("beforebegin", '<h2>Hello</h2>'); //h2 идет ДО h1 ВНЕ обертки див блэк
-//div.insertAdjacentHTML("afterend", '<h2>Hello</h2>');//h2 идет после h1 ВНЕ обертки див блэк
+// //div.insertAdjacentHTML("afterbegin", '<h2>Hello</h2>');//h2 идет ДО h1 ВНУТРИ обертки див блэк
+// //div.insertAdjacentHTML("beforeend", '<h2>Hello</h2>');//h2 идет ПОСЛЕ h1 ВНУТРИ обертки див блэк
+// //div.insertAdjacentHTML("beforebegin", '<h2>Hello</h2>'); //h2 идет ДО h1 ВНЕ обертки див блэк
+// //div.insertAdjacentHTML("afterend", '<h2>Hello</h2>');//h2 идет после h1 ВНЕ обертки див блэк
 
-//урок 45 События и их обработчики
-//событие - это сигнал от браузера, что что-то произошло(клик, двойной клик, наведение мыши, убрать мышь, прокрутка колесиком, отправка данных в форме, нажатие клавиш на клавиатуре) то что пользователь занимается на странице и есть событие и мы их можем отлавливать
+// //урок 45 События и их обработчики
+// //событие - это сигнал от браузера, что что-то произошло(клик, двойной клик, наведение мыши, убрать мышь, прокрутка колесиком, отправка данных в форме, нажатие клавиш на клавиатуре) то что пользователь занимается на странице и есть событие и мы их можем отлавливать
 
-//const btn = document.querySelector('button');//ЗАКОММЕНТИЛА КОГДА РАЗБИРАЛА querySelectorAll
-
-
-// btn.onclick = function() {
-//     alert('Click');
-// };//УСТАРЕВШИЙ вариант-перезаписывается другим обработчиком
-// btn.onclick = function() {
-//     alert('Second click');
-// };//при том, что есть первый обработчик, второй обработчик перезаписывает и при нажатии на кнопку - вылезает только второй алерт
+// //const btn = document.querySelector('button');//ЗАКОММЕНТИЛА КОГДА РАЗБИРАЛА querySelectorAll
 
 
-//eventListener - слушатель события
-// btn.addEventListener('click', () => {
-//     alert('Click');
-// });
-// btn.addEventListener('click', () => {
-//     alert('Second click');
-// });//при клике появляется первый алерт, а за ним второй
-
-//btn.addEventListener('mouseenter', (event) => {
-    //alert('Hover');//при наведении на кнопку btn вылезает алерт на котором написано Hover
-    //console.log('Hover');//при каждом наведении мышки на кнопку btn в консоли пишется Hover  счетчик
-    //console.log(event);//возвращает объект который описывает что произошло с элементом на который навели мышку MouseEvent {isTrusted: true, screenX: 109, screenY: 137, clientX: 102, clientY: 9, …}
-    //важное свойство type: "mouseenter" - тип события который произошел
-    //важное свойство target: button#btn - элемент на котором произошло событие
-    //console.log(event.target);//консоль возвращает <button id="btn">Нажми меня</button>
-    //event.target.remove();//при наведении на кнопку она пропадает со страницы
-    //если вместо 'mouseenter' написать 'click' - элемент пропадает при клике
-//});
+// // btn.onclick = function() {
+// //     alert('Click');
+// // };//УСТАРЕВШИЙ вариант-перезаписывается другим обработчиком
+// // btn.onclick = function() {
+// //     alert('Second click');
+// // };//при том, что есть первый обработчик, второй обработчик перезаписывает и при нажатии на кнопку - вылезает только второй алерт
 
 
-//delete
-//let i = 0;
-//const deleteElement = (event) => {
-//    console.log(event.target);
-//    i++;
-//    if (i == 1) {
-//        btn.removeEventListener('click', deleteElement);
-//    }
-//};
-//btn.addEventListener('click', deleteElement);
-//один ответ и больше ничего не происходит
+// //eventListener - слушатель события
+// // btn.addEventListener('click', () => {
+// //     alert('Click');
+// // });
+// // btn.addEventListener('click', () => {
+// //     alert('Second click');
+// // });//при клике появляется первый алерт, а за ним второй
+
+// //btn.addEventListener('mouseenter', (event) => {
+//     //alert('Hover');//при наведении на кнопку btn вылезает алерт на котором написано Hover
+//     //console.log('Hover');//при каждом наведении мышки на кнопку btn в консоли пишется Hover  счетчик
+//     //console.log(event);//возвращает объект который описывает что произошло с элементом на который навели мышку MouseEvent {isTrusted: true, screenX: 109, screenY: 137, clientX: 102, clientY: 9, …}
+//     //важное свойство type: "mouseenter" - тип события который произошел
+//     //важное свойство target: button#btn - элемент на котором произошло событие
+//     //console.log(event.target);//консоль возвращает <button id="btn">Нажми меня</button>
+//     //event.target.remove();//при наведении на кнопку она пропадает со страницы
+//     //если вместо 'mouseenter' написать 'click' - элемент пропадает при клике
+// //});
 
 
-//всплытие событий
-const overlay = document.querySelector('.overlay');
-const deleteElement = (event) => {
-    console.log(event.target);
-    //console.log(event.currentTarget);//другой способ таргета
-    console.log(event.type);
-
-};
-//btn.addEventListener('click', deleteElement);//ЗАКОММЕНТИЛА КОГДА РАЗБИРАЛА querySelectorAll
-//overlay.addEventListener('click', deleteElement);//ЗАКОММЕНТИЛА КОГДА РАЗБИРАЛА querySelectorAll
-//при нажатии на кнопку в консоль я получаю два результата
-//вначале событие сработало на том элементе которое идет вложеннее (кнопка)
-//и после этого по иерархии вверх оно поднялось и уже сработала на розовой области overlay - это и называется всплытие событий
-//когда данное действие срабатывает вначале на вложенном элементе и после этого поднимается наверх по иерархии нашего дом-дерева
-//всплытие событий это когда обработчик событий сначала срабатывает на самом вложенном элементе, затем на родителе, и так выше и выше поднимаясь по иерархии 
+// //delete
+// //let i = 0;
+// //const deleteElement = (event) => {
+// //    console.log(event.target);
+// //    i++;
+// //    if (i == 1) {
+// //        btn.removeEventListener('click', deleteElement);
+// //    }
+// //};
+// //btn.addEventListener('click', deleteElement);
+// //один ответ и больше ничего не происходит
 
 
-//важно уметь отменять стандартное поведение в браузере 
-const link = document.querySelector('a');
-link.addEventListener('click', function(e) {
-    e.preventDefault();
-    console.log(e.target);
-});//отменяет стандартное поведение браузера при нажатии на ссылку раньше переход на ютуб, а теперь в консоли ответ <a href="https://www.youtube.com/">https://www.youtube.com/</a>
+// //всплытие событий
+// const overlay = document.querySelector('.overlay');
+// const deleteElement = (event) => {
+//     console.log(event.target);
+//     //console.log(event.currentTarget);//другой способ таргета
+//     console.log(event.type);
+
+// };
+// //btn.addEventListener('click', deleteElement);//ЗАКОММЕНТИЛА КОГДА РАЗБИРАЛА querySelectorAll
+// //overlay.addEventListener('click', deleteElement);//ЗАКОММЕНТИЛА КОГДА РАЗБИРАЛА querySelectorAll
+// //при нажатии на кнопку в консоль я получаю два результата
+// //вначале событие сработало на том элементе которое идет вложеннее (кнопка)
+// //и после этого по иерархии вверх оно поднялось и уже сработала на розовой области overlay - это и называется всплытие событий
+// //когда данное действие срабатывает вначале на вложенном элементе и после этого поднимается наверх по иерархии нашего дом-дерева
+// //всплытие событий это когда обработчик событий сначала срабатывает на самом вложенном элементе, затем на родителе, и так выше и выше поднимаясь по иерархии 
 
 
-// //querySelectorAll возвращает псевдомассив у которого нет метода addEventListener
-// //если я делаю:
-// const btns = document.querySelectorAll('button');
-// btns.forEach(item => {
-//     item.addEventListener('click', deleteElement, {once: true});
-// });//теперь каждая кнопка работает
-// //once - один раз аналог remove удаления после того как сработает
-//закомментировала когда тестировала адаптивность - консоль ругается что btns несколько раз объявлена
+// //важно уметь отменять стандартное поведение в браузере 
+// const link = document.querySelector('a');
+// link.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     console.log(e.target);
+// });//отменяет стандартное поведение браузера при нажатии на ссылку раньше переход на ютуб, а теперь в консоли ответ <a href="https://www.youtube.com/">https://www.youtube.com/</a>
+
+
+// // //querySelectorAll возвращает псевдомассив у которого нет метода addEventListener
+// // //если я делаю:
+// // const btns = document.querySelectorAll('button');
+// // btns.forEach(item => {
+// //     item.addEventListener('click', deleteElement, {once: true});
+// // });//теперь каждая кнопка работает
+// // //once - один раз аналог remove удаления после того как сработает
+// //закомментировала когда тестировала адаптивность - консоль ругается что btns несколько раз объявлена
 
 
 //урок 47 рекурсия
@@ -2101,212 +2101,212 @@ link.addEventListener('click', function(e) {
 
 
 
-//упражнение по написанию кода 16:(*) Задача на рекурсию
+// //упражнение по написанию кода 16:(*) Задача на рекурсию
 
-//Напишите функцию, которая вычисляет факториал.
-//Факториал  – это число, умноженное на "себя минус один", затем на "себя минус два", и так далее до 1. Факториал n обозначается как n!
-//Отсюда мы можем понять, что функция должна принимать 1 аргумент, который будет являться числом. 
-//Будет неплохо, если вы на собеседовании сразу напишите проверку на приходящее значение = если в нашу функцию приходит дробное число или не число  - возвращается строка с любым сообщением на ваше усмотрение. Если 0 и меньше - возвращается число 1.
-//Сам же факториал с примерами выглядит вот так:
-//n! = n * (n - 1) * (n - 2) * ...*1 - это общая формула
-//Примеры значений для разных n:
-//1! = 1
-//2! = 2 * 1 = 2
-//3! = 3 * 2 * 1 = 6
-//4! = 4 * 3 * 2 * 1 = 24
-//5! = 5 * 4 * 3 * 2 * 1 = 120
-//То есть, вызов нашей функции factorial(5) возвращает число 120
-//factorial(4) => 24
-//Решить задачу нужно через рекурсию.
-//Integer - Целое число
+// //Напишите функцию, которая вычисляет факториал.
+// //Факториал  – это число, умноженное на "себя минус один", затем на "себя минус два", и так далее до 1. Факториал n обозначается как n!
+// //Отсюда мы можем понять, что функция должна принимать 1 аргумент, который будет являться числом. 
+// //Будет неплохо, если вы на собеседовании сразу напишите проверку на приходящее значение = если в нашу функцию приходит дробное число или не число  - возвращается строка с любым сообщением на ваше усмотрение. Если 0 и меньше - возвращается число 1.
+// //Сам же факториал с примерами выглядит вот так:
+// //n! = n * (n - 1) * (n - 2) * ...*1 - это общая формула
+// //Примеры значений для разных n:
+// //1! = 1
+// //2! = 2 * 1 = 2
+// //3! = 3 * 2 * 1 = 6
+// //4! = 4 * 3 * 2 * 1 = 24
+// //5! = 5 * 4 * 3 * 2 * 1 = 120
+// //То есть, вызов нашей функции factorial(5) возвращает число 120
+// //factorial(4) => 24
+// //Решить задачу нужно через рекурсию.
+// //Integer - Целое число
+
+
+// // function factorial(n) {
+// //     return n ? n * factorial(n - 1) : 1;
+// // }
+// // console.log(factorial(5));//120-короткий вариант
+// // console.log(factorial(-5));//ошибка-не учитывает отрицательные значения
 
 
 // function factorial(n) {
-//     return n ? n * factorial(n - 1) : 1;
+//     if (typeof(n) !== 'number' || !Number.isInteger(n)) {
+//         return "Ошибка, проверьте данные";
+//     }
+
+//     if (n >= 1) {
+//         return n * factorial(n - 1);
+//     } else {
+//         return 1;
+//     }
 // }
-// console.log(factorial(5));//120-короткий вариант
-// console.log(factorial(-5));//ошибка-не учитывает отрицательные значения
 
-
-function factorial(n) {
-    if (typeof(n) !== 'number' || !Number.isInteger(n)) {
-        return "Ошибка, проверьте данные";
-    }
-
-    if (n >= 1) {
-        return n * factorial(n - 1);
-    } else {
-        return 1;
-    }
-}
-
-console.log(factorial(5));//120
-console.log(factorial(-5));//1
+// console.log(factorial(5));//120
+// console.log(factorial(-5));//1
 
 
 
-//урок 49. События на мобильных устройствах
-//поддерживается только в мобильных браузерах
-//события:
-// 1) touchstart - событие выполняется при касании к элементу
-// 2) touchmove - при движении пальца по элементу
-// 3) touchend - когда палец отрывается от элемента
-// 4) touchenter - срабатывает когда пальцем ведем и наскакиваем на элемент на который повешено событие
-// 5) touchleave - срабатывает когда пальцем ведем и рошел за пределы элемента на который повешено событие
-// 6) touchcancel - точка соприкосновения больше не регистрируется на поверхности(палец вышел за пределы браузера)
+// //урок 49. События на мобильных устройствах
+// //поддерживается только в мобильных браузерах
+// //события:
+// // 1) touchstart - событие выполняется при касании к элементу
+// // 2) touchmove - при движении пальца по элементу
+// // 3) touchend - когда палец отрывается от элемента
+// // 4) touchenter - срабатывает когда пальцем ведем и наскакиваем на элемент на который повешено событие
+// // 5) touchleave - срабатывает когда пальцем ведем и рошел за пределы элемента на который повешено событие
+// // 6) touchcancel - точка соприкосновения больше не регистрируется на поверхности(палец вышел за пределы браузера)
 
-window.addEventListener('DOMContentLoaded', () => {
-    const boxTouch = document.querySelector('.boxTouch');
+// window.addEventListener('DOMContentLoaded', () => {
+//     const boxTouch = document.querySelector('.boxTouch');
 
-    boxTouch.addEventListener('touchstart', (e) => {
-        e.preventDefault();//отменяет стандартное поведение браузера
+//     boxTouch.addEventListener('touchstart', (e) => {
+//         e.preventDefault();//отменяет стандартное поведение браузера
 
-        console.log('Start');
-        //console.log(e.touches);//ответ TouchList {0: Touch, length: 1} - 1 палец
-        console.log(e.targetTouches);//почти тоже самое, через адаптивность нельзя смоделировать несколько пальцев
-        console.log(e.changedTouches);//почти тоже самое, через адаптивность нельзя смоделировать несколько пальцев, но на мобильном устройстве все будет работать правильно: покажет список из пальцев которые коснулись элемента.
-    });//при клике на область в консоли выводится старт и счетчик сколько раз клацнули
+//         console.log('Start');
+//         //console.log(e.touches);//ответ TouchList {0: Touch, length: 1} - 1 палец
+//         console.log(e.targetTouches);//почти тоже самое, через адаптивность нельзя смоделировать несколько пальцев
+//         console.log(e.changedTouches);//почти тоже самое, через адаптивность нельзя смоделировать несколько пальцев, но на мобильном устройстве все будет работать правильно: покажет список из пальцев которые коснулись элемента.
+//     });//при клике на область в консоли выводится старт и счетчик сколько раз клацнули
 
-    boxTouch.addEventListener('touchmove', (e) => {
-        e.preventDefault();//отменяет стандартное поведение браузера
+//     boxTouch.addEventListener('touchmove', (e) => {
+//         e.preventDefault();//отменяет стандартное поведение браузера
 
-        //console.log('Move');//тестирую targetTouches
-        console.log(e.targetTouches[0].pageX);//при движении нажатого пальца в консоль выводится координата-координаты xy в дальшейшем можно задавать на какую часть слайдера по координатам пользователь должен нажать чтобы слайдер перелистнулся, но есть уже готовые библиотеки типа hammer.js 
-    });//при нажатии и движении пальца по элементу в консоли выводится move и счетчик сколько раз передвинули палец
+//         //console.log('Move');//тестирую targetTouches
+//         console.log(e.targetTouches[0].pageX);//при движении нажатого пальца в консоль выводится координата-координаты xy в дальшейшем можно задавать на какую часть слайдера по координатам пользователь должен нажать чтобы слайдер перелистнулся, но есть уже готовые библиотеки типа hammer.js 
+//     });//при нажатии и движении пальца по элементу в консоли выводится move и счетчик сколько раз передвинули палец
 
-    boxTouch.addEventListener('touchend', (e) => {
-        e.preventDefault();//отменяет стандартное поведение браузера
+//     boxTouch.addEventListener('touchend', (e) => {
+//         e.preventDefault();//отменяет стандартное поведение браузера
 
-        console.log('End');
-    });//при убирании пальца от элемента в консоли выводится end и счетчик сколько раз убрали палец
-});
+//         console.log('End');
+//     });//при убирании пальца от элемента в консоли выводится end и счетчик сколько раз убрали палец
+// });
 
-//три главных свойства при работе с сенсорными устройствами
-//1) touches - св-во которое выдает нам список всех пальцев которые сейчас взаимодействуют с экраном (прямо сейчас тапнули и держат пользователи)
-//чтобы увидеть пишу console.log(e.touches);
-//ответ объект TouchList {0: Touch, length: 1} - 1 палец
-//length - то количество пальцев
-//target - с каким элементом произошло действие
-//координаты xy в дальшейшем можно задавать на какую часть слайдера по координатам пользователь должен нажать чтобы слайдер перелистнулся
-//2) targetTouches - св-во все пальцы которые взаимодействуют именно с этим элементом конкретным
-//3) changedTouches - список пальцев которые участвуют в текущем событии. То есть если приложить 5 пальцев и при использовании touchEnd в списке будет 1 убранный палец даже если остальные 4 еще на экране.
-//еще есть свайп, щепотка(зум)
-
-
-
-//урок 50 
-//как подключить script.js
-
-function loadScript(src) {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = false;
-    document.body.append(script);
-}
-
-// loadScript("js/script.js"); почему-то здесь не подключает js в котором куча всего, только новые в которых 1 запись:
-loadScript("js/some.js");
-loadScript("js/test.js");
+// //три главных свойства при работе с сенсорными устройствами
+// //1) touches - св-во которое выдает нам список всех пальцев которые сейчас взаимодействуют с экраном (прямо сейчас тапнули и держат пользователи)
+// //чтобы увидеть пишу console.log(e.touches);
+// //ответ объект TouchList {0: Touch, length: 1} - 1 палец
+// //length - то количество пальцев
+// //target - с каким элементом произошло действие
+// //координаты xy в дальшейшем можно задавать на какую часть слайдера по координатам пользователь должен нажать чтобы слайдер перелистнулся
+// //2) targetTouches - св-во все пальцы которые взаимодействуют именно с этим элементом конкретным
+// //3) changedTouches - список пальцев которые участвуют в текущем событии. То есть если приложить 5 пальцев и при использовании touchEnd в списке будет 1 убранный палец даже если остальные 4 еще на экране.
+// //еще есть свайп, щепотка(зум)
 
 
 
-//упражнение по написанию кода 17*** сложная задача на вычисление количества страниц
-//Задание:
-//В каждой книге есть n страниц с номерами страниц от 1 до n. Написать функцию amountOfPages, аргумент которой summary составляется путем сложения количества цифр всех номеров страниц. Эта функция возвращает число - количество страниц n в книге. Чтобы было понятно что такое количество цифр, давайте рассмотрим примеры.
-//Пример:
-//Если на входе функции summary = 25, то на результат должен быть 17. Всего в числах от 1 до 17 содержится 25 цифр: 1234567891011121314151617.
-//Функция на вход как раз принимает это общее количество цифр, а возвращает конечное число, то есть последнюю страницу книги.
-//amountOfPages(5) => 5
-//amountOfPages(25) => 17
-//amountOfPages(1095) => 401   
-//amountOfPages(185) => 97
+// //урок 50 
+// //как подключить script.js
 
-function amountOfPages(summary) {
-    let result = '';
-    let n = 0;
+// function loadScript(src) {
+//     const script = document.createElement('script');
+//     script.src = src;
+//     script.async = false;
+//     document.body.append(script);
+// }
 
-    for (let i = 1; i <= summary; i++) {
-        result += i;
-        if (result.length === summary) {
-            n = i;
-            break;
-        }
-    }
-    return n;
-}
+// // loadScript("js/script.js"); почему-то здесь не подключает js в котором куча всего, только новые в которых 1 запись:
+// loadScript("js/some.js");
+// loadScript("js/test.js");
 
 
 
-//Упражнение по написанию кода 18** Сложная задача на работу со строками
-//Задание:
-//Панграмма — это предложение, в котором каждая буква алфавита встречается хотя бы по одному разу по возможности без повторений. Например, предложение «The quick brown fox jumps over the lazy dog» является панграммой, поскольку в нем хотя бы один раз используются буквы от A до Z (регистр значения не имеет).
-//Напишите функцию isPangram, которая принимает в себя строку и возвращает логическое значение. Если строка является панграммой - вернется true, если нет - false.
-//Пример:
-//isPangram(«The quick brown fox jumps over the lazy dog») => true
-//isPangram(«Hello world») => false
+// //упражнение по написанию кода 17*** сложная задача на вычисление количества страниц
+// //Задание:
+// //В каждой книге есть n страниц с номерами страниц от 1 до n. Написать функцию amountOfPages, аргумент которой summary составляется путем сложения количества цифр всех номеров страниц. Эта функция возвращает число - количество страниц n в книге. Чтобы было понятно что такое количество цифр, давайте рассмотрим примеры.
+// //Пример:
+// //Если на входе функции summary = 25, то на результат должен быть 17. Всего в числах от 1 до 17 содержится 25 цифр: 1234567891011121314151617.
+// //Функция на вход как раз принимает это общее количество цифр, а возвращает конечное число, то есть последнюю страницу книги.
+// //amountOfPages(5) => 5
+// //amountOfPages(25) => 17
+// //amountOfPages(1095) => 401   
+// //amountOfPages(185) => 97
 
-//1 вариант, когда строка переводится в нижний регистр до всех операций только 1 раз - это должно экономить ресурсы компьютера
-function isPangram(string) {
-    string = string.toLowerCase();
-    return "abcdefghijklmnopqrstuvwxyz".split("").every(function(x){
-        return string.indexOf(x) !== -1;
-    });
-}
+// function amountOfPages(summary) {
+//     let result = '';
+//     let n = 0;
 
-//2 вариант - с другим методом и строка каждый раз преобразовывается в коллбэке
-function isPangram(string) {
-    return 'abcdefghijklmnopqrstuvwxyz'
-        .split('')
-        .every((x) => string.toLowerCase().includes(x));
-}
-
-//3 вариант - при помощи цикла
-function isPangram(str) {
-    letters: for (var c = 0; c < 26; c++) {
-        for (let i = 0; i < str.length; i++) {
-            let s = str.charCodeAt(i)
-            if (s < 65 || s > 90 && s < 97 || s > 122) continue
-            if (s === 65 + c || s === 97 + c) continue letters
-        }
-
-        return false
-    }
-
-    return true
-}
-
-//4 вариант - при помощи set
-function isPangram(string) {
-    return new Set(string.toLocaleLowerCase().replace(/[^a-z]/gi, '').split('')).size === 26;
-}
-
-//5 вариант - с использованием регулярных выражений
-function isPangram(string) {
-    return (string.match(/([a-z])(?!.*\1)/ig) || []).length === 26;
-}
+//     for (let i = 1; i <= summary; i++) {
+//         result += i;
+//         if (result.length === summary) {
+//             n = i;
+//             break;
+//         }
+//     }
+//     return n;
+// }
 
 
 
-//упражнение по написанию кода 19** сложная задача на работу с рекурсией
-//Задание:
-//Создайте функцию deepCount, которая будет считать количество всех элементов в массиве, включая и вложенные массивы. Учтите, что сам вложенный массив тоже входит в счет. Чтобы понять задачу детальнее, давайте рассмотрим примеры:
-//deepCount([1, 5, 3]) => 3
-//deepCount(["1", 5, "3", ["10"]]) => 5 (Заметьте, что последний элемент был посчитан сам + его внутренность)
-//deepCount([1, 2, [3, 4, [5]]]) => 7
-//deepCount([]) => 0
-//deepCount([[[[[[[[[]]]]]]]]]) => 8
+// //Упражнение по написанию кода 18** Сложная задача на работу со строками
+// //Задание:
+// //Панграмма — это предложение, в котором каждая буква алфавита встречается хотя бы по одному разу по возможности без повторений. Например, предложение «The quick brown fox jumps over the lazy dog» является панграммой, поскольку в нем хотя бы один раз используются буквы от A до Z (регистр значения не имеет).
+// //Напишите функцию isPangram, которая принимает в себя строку и возвращает логическое значение. Если строка является панграммой - вернется true, если нет - false.
+// //Пример:
+// //isPangram(«The quick brown fox jumps over the lazy dog») => true
+// //isPangram(«Hello world») => false
 
-//1 вариант с циклом
-function deepCount(a) {
-    let count = a.length;
-    for (let i = 0; i < a.length; i++) if (Array.isArray(a[i])) count += deepCount(a[i]);
-    return count;
-}
+// //1 вариант, когда строка переводится в нижний регистр до всех операций только 1 раз - это должно экономить ресурсы компьютера
+// function isPangram(string) {
+//     string = string.toLowerCase();
+//     return "abcdefghijklmnopqrstuvwxyz".split("").every(function(x){
+//         return string.indexOf(x) !== -1;
+//     });
+// }
 
-//2 вариант в методом reduce
-function deepCount(a) {
-    return a.reduce((s,e)=>s+(Array.isArray(e) ? deepCount(e) : 0),a.length);
-}
+// //2 вариант - с другим методом и строка каждый раз преобразовывается в коллбэке
+// function isPangram(string) {
+//     return 'abcdefghijklmnopqrstuvwxyz'
+//         .split('')
+//         .every((x) => string.toLowerCase().includes(x));
+// }
+
+// //3 вариант - при помощи цикла
+// function isPangram(str) {
+//     letters: for (var c = 0; c < 26; c++) {
+//         for (let i = 0; i < str.length; i++) {
+//             let s = str.charCodeAt(i)
+//             if (s < 65 || s > 90 && s < 97 || s > 122) continue
+//             if (s === 65 + c || s === 97 + c) continue letters
+//         }
+
+//         return false
+//     }
+
+//     return true
+// }
+
+// //4 вариант - при помощи set
+// function isPangram(string) {
+//     return new Set(string.toLocaleLowerCase().replace(/[^a-z]/gi, '').split('')).size === 26;
+// }
+
+// //5 вариант - с использованием регулярных выражений
+// function isPangram(string) {
+//     return (string.match(/([a-z])(?!.*\1)/ig) || []).length === 26;
+// }
 
 
 
+// //упражнение по написанию кода 19** сложная задача на работу с рекурсией
+// //Задание:
+// //Создайте функцию deepCount, которая будет считать количество всех элементов в массиве, включая и вложенные массивы. Учтите, что сам вложенный массив тоже входит в счет. Чтобы понять задачу детальнее, давайте рассмотрим примеры:
+// //deepCount([1, 5, 3]) => 3
+// //deepCount(["1", 5, "3", ["10"]]) => 5 (Заметьте, что последний элемент был посчитан сам + его внутренность)
+// //deepCount([1, 2, [3, 4, [5]]]) => 7
+// //deepCount([]) => 0
+// //deepCount([[[[[[[[[]]]]]]]]]) => 8
+
+// //1 вариант с циклом
+// function deepCount(a) {
+//     let count = a.length;
+//     for (let i = 0; i < a.length; i++) if (Array.isArray(a[i])) count += deepCount(a[i]);
+//     return count;
+// }
+
+// //2 вариант в методом reduce
+// function deepCount(a) {
+//     return a.reduce((s,e)=>s+(Array.isArray(e) ? deepCount(e) : 0),a.length);
+// }
+//
+//
+//
